@@ -352,11 +352,11 @@ var fround = Math.fround || function(x) { return x };
 // p1 and p2 are objects that have x, y, and z properties
 // dp is optional number of decimal places to round to (defaults to 2)
 // returns the distance between p1 and p2, calculated as single precision (as ED does),
-// as a string with the specified number of decimal places
+// rounded to the specified number of decimal places
 function eddist(p1, p2, dp) {
 	dp = (typeof dp === 'undefined') ? 2 : dp;
 	var v = diff(p2,p1);
-	var d = fround(Math.sqrt(fround(fround(v.x*v.x) + fround(v.y*v.y) + fround(v.z*v.z))));
+	var d = fround(Math.sqrt(fround(fround(fround(v.x*v.x) + fround(v.y*v.y)) + fround(v.z*v.z))));
 	return round(d,dp);
 }
 
